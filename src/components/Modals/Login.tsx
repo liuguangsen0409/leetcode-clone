@@ -1,9 +1,18 @@
 import React from 'react';
+import { authModalState } from '@/atoms/authModalAtom';
+import { useSetRecoilState } from 'recoil';
 
 type LoginProps = {};
 
 const Login:React.FC<LoginProps> = () => {
-  return <form className="space-y-6 px-6 pb-4">
+  const setAuthModalState = useSetRecoilState(authModalState)
+  
+  const handleClick = (type: 'login' | 'register' | 'forgotPassword') => {
+    setAuthModalState((prev) => ({ ...prev, type }))
+  }
+
+  return (
+    <form className="space-y-6 px-6 pb-4">
     <h3 className="text-xl font-medium text-white">Sign in to LeetClone</h3>
     <div>
       <label htmlFor="email" className="text-sm font-medium block mb-2 text-gray-300">
@@ -20,17 +29,18 @@ const Login:React.FC<LoginProps> = () => {
     <button className="w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-brand-orange hover:bg-brand-orange-s">
       Log In
     </button>
-    <button className="flex w-full justify-end">
+    <button className="flex w-full justify-end" onClick={ () => handleClick('forgorPassword') }>
       <a href="#" className="text-sm block text-brand-orange hover:underline w-full text-right">
         Forgot Password?
       </a>
     </button>
-    <button className="text-sm font-medium text-gray-300">
+    <button className="text-sm font-medium text-gray-300" onClick={ () => handleClick('register') }>
       Not Registered? {" "}
       <a href="#" className="text-blue-700 hover:underline">
         Create account
       </a>
     </button>
   </form>
+  )
 }
 export default Login;
