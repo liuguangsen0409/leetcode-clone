@@ -45,7 +45,7 @@ function useCloseModal () {
   }
 
   useEffect(() => {
-    const handleEsc = (e: keyboardEvent) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeModal()
       }
