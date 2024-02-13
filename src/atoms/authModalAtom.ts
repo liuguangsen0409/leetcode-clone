@@ -1,4 +1,3 @@
-import { init } from 'next/dist/compiled/@vercel/og/satori';
 import { atom } from 'recoil';
 
 type AuthModalState = {
