@@ -39,12 +39,12 @@ const Playground:React.FC<PlaygroundProps> = ({ problem }) => {
             {
               problem.examples.map((example, index) => (
                 <div 
-                  className="mr-2 items-start mt-2 text-white" 
+                  className="mr-2 items-start mt-2" 
                   key={example.id}
                   onClick={() => setActiveTestCaseId(example.id)}
                 >
                   <div className="flex flex-wrap items-center gap-y-4">
-                    <div className="caseBtn">Case {index + 1}</div>
+                    <div className={`caseBtn ${activeTestCaseId === index ? 'text-white' : 'text-gray-500'}`}>Case {index + 1}</div>
                   </div>
                 </div>
               ))
