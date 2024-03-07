@@ -60,7 +60,7 @@ const Topbar:React.FC<TopbarProps> = ({ problemPage }) => {
             )
           }
           {
-            problemPage && <Timer />
+            user && problemPage && <Timer />
           }
           {
             user && (
